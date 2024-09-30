@@ -9,6 +9,8 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.stereotype.Component;
 
 @Component
+// NB: il n'est pas nécessaire d'injecter manuellement le FeignInterceptor dans une @Configuration pour qu'il soit utilisé (comme dans le cas de composant "RestTemplateInterceptor").
+//     Dès que ajouter @EnableFeignClients dans application, Spring inclut tous les beans de type "RequestInterceptor" enregistrés dans le contexte.
 public class FeignInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate requestTemplate) {
